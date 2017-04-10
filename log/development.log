@@ -761,3 +761,55 @@ Processing by PostsController#edit as HTML
   [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 4]]
   Rendered posts/edit.html.erb within layouts/application (16.0ms)
 Completed 200 OK in 347ms (Views: 318.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/posts/new" for ::1 at 2017-04-10 18:07:21 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (2.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PostsController#new as HTML
+  Rendered posts/new.html.erb within layouts/application (12.2ms)
+Completed 200 OK in 537ms (Views: 501.7ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/posts" for ::1 at 2017-04-10 18:07:33 -0400
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qqC10yToW952M20bOeNN0lLo7iVORAdXtzQZNrKWlvueRreL5sIX/l0iI3wu25jtwjjtO0BesIHnHLONODumtQ==", "title"=>"Dumb Post", "description"=>"Maybe not so dumb", "commit"=>"Submit Post"}
+  [1m[35m (0.7ms)[0m  begin transaction
+  [1m[36mSQL (3.6ms)[0m  [1mINSERT INTO "posts" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Dumb Post"], ["description", "Maybe not so dumb"], ["created_at", "2017-04-10 22:07:34.050092"], ["updated_at", "2017-04-10 22:07:34.050092"]]
+  [1m[35m (4.7ms)[0m  commit transaction
+Redirected to http://localhost:3000/posts/5
+Completed 302 Found in 183ms (ActiveRecord: 9.1ms)
+
+
+Started GET "/posts/5" for ::1 at 2017-04-10 18:07:34 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 5]]
+  Rendered posts/show.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 85ms (Views: 51.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/5/edit" for ::1 at 2017-04-10 18:07:38 -0400
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 5]]
+  Rendered posts/edit.html.erb within layouts/application (55.9ms)
+Completed 200 OK in 86ms (Views: 84.6ms | ActiveRecord: 0.2ms)
+
+
+Started PATCH "/posts/5" for ::1 at 2017-04-10 18:07:45 -0400
+Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ud/ht7BNhbLZnyxvIvBAk+jRBd7d0GLNy46VJKk0H2RlOePvcmfJkvKOYgg1yJWseAEGwNPK1Rubpj+fI5kvKg==", "post"=>{"title"=>"Dumb Post", "description"=>"Maybe not so dumb, huh?"}, "commit"=>"Update Post", "id"=>"5"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "posts" SET "title" = ?, "description" = ?, "updated_at" = ? WHERE "posts"."id" = ?[0m  [["title", nil], ["description", nil], ["updated_at", "2017-04-10 22:07:45.460587"], ["id", 5]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Redirected to http://localhost:3000/posts/5
+Completed 302 Found in 10ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/posts/5" for ::1 at 2017-04-10 18:07:45 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mPost Load (0.7ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 5]]
+  Rendered posts/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 36ms (Views: 34.7ms | ActiveRecord: 0.7ms)
